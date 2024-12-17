@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  spring-app:
+    build: .
+    container_name: akhil-demo-app
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/akhil
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
+    networks:
+      - myapp-network
+      
+networks:
+  myapp-network:
+    external: true
